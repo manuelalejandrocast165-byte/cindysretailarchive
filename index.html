@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINDY'S | Drop 01 Activo — ESTD. 2026</title>
+    
+    <!-- Meta etiquetas para vista previa en WhatsApp, Instagram y Facebook -->
+    <meta property="og:title" content="CINDY'S | Drop 01 Activo">
+    <meta property="og:description" content="Colección limitada. El acceso se cierra al agotar existencias.">
+    <meta property="og:image" content="assets/branding/logo-og-share.png">
+    
+    <!-- Favicon e ícono móvil -->
+    <link rel="icon" type="image/png" href="assets/branding/mascota-color-transp.png">
+    <link rel="apple-touch-icon" href="assets/branding/mascota-color-bg.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-dark: #0e442c;
+            --pink-soft: #ef98c1;
+            --pink-hot: #d93c78;
+            --peach-bg: #ffddd2;
+            --black: #000000;
+            --white: #ffffff;
+
+            --font-main: 'Montserrat', sans-serif;
+            --font-display: 'Archivo Black', 'Montserrat', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); }
+
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+        }
+        body.no-scroll { overflow: hidden; }
+
+        button { font-family: inherit; }
+        :focus-visible { outline: 2px solid var(--pink-hot); outline-offset: 2px; }
+
+        /* Barra Superior */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: var(--green-dark);
+            color: var(--white);
+            border-bottom: 2px solid var(--black);
+            position: sticky;
+            top: 0;
+            z-index: 9;
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .brand-header img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 0 var(--black));
+        }
+
+        .brand-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+
+        .header-right { display: flex; align-items: center; gap: 1.25rem; }
+
+        .status {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background-color: var(--pink-soft);
+            color: var(--black);
+            padding: 0.35rem 0.75rem;
+            border-radius: 99px;
+            border: 1.5px solid var(--black);
+        }
+
+        .btn-cart {
+            background: var(--white);
+            border: 2px solid var(--black);
+            color: var(--black);
+            padding: 0.55rem 1rem;
+            font-weight: 800;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 3px 3px 0 var(--black);
+            transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s;
+        }
+        .btn-cart:hover {
+            background-color: var(--pink-soft);
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--black);
+        }
+
+        .cart-count {
+            display: inline-block;
+            min-width: 1.4rem;
+            margin-left: 0.45rem;
+            padding: 0.1rem 0.4rem;
+            background: var(--pink-hot);
+            color: var(--white);
+            border-radius: 99px;
+            font-size: 0.72rem;
+            text-align: center;
+        }
+
+        /* Sección Hero */
+        .hero {
+            text-align: center;
+            padding: 3.5rem 1rem 3rem;
+            background-color: var(--peach-bg);
+            border-bottom: 2px solid var(--black);
+        }
+
+        .hero-logo-box {
+            max-width: 320px;
+            margin: 0 auto 1.25rem;
+        }
+
+        .hero-logo-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            text-transform: uppercase;
+            color: var(--green-dark);
+            letter-spacing: 0.5px;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero p {
+            color: var(--black);
+            font-size: 1rem;
+            font-weight: 600;
+            max-width: 560px;
+            margin: 0 auto 2rem auto;
+            opacity: 0.85;
+        }
+
+        /* Cuenta Regresiva */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+        }
+
+        .time-box {
+            background-color: var(--white);
+            border: 2px solid var(--black);
+            box-shadow: 4px 4px 0 var(--green-dark);
+            padding: 0.85rem 1.25rem;
+            min-width: 95px;
+        }
+
+        .time-box span { display: block; }
+        .time-box .number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--pink-hot);
+        }
+        .time-box .label {
+            font-size: 0.7rem;
+            color: var(--black);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.2rem;
+        }
+
+        /* Cuadrícula de 6 Productos */
+        .grid-container {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 3.5rem 5% 5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.25rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            box-shadow: 6px 6px 0 var(--black);
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 8px 8px 0 var(--green-dark);
+        }
+
+        /* Contenedor de imagen optimizado para no recortar listones ni tirantes */
+        .product-image {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background-color: #f6f6f6;
+            border-bottom: 2px solid var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 0.5rem;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .product-image img.cover-fit {
+            object-fit: cover;
+            padding: 0;
+        }
+        .product-card:hover .product-image img {
+            transform: scale(1.03);
+        }
+
+        .badge-drop {
+            position: absolute;
+            top: 0.75rem;
+            left: 0.75rem;
+            background: var(--pink-soft);
+            color: var(--black);
+            border: 1.5px solid var(--black);
+            padding: 0.25rem 0.65rem;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            box-shadow: 2px 2px 0 var(--black);
+            z-index: 2;
+        }
+
+        .product-info {
+            padding: 1.15rem 1.25rem 0.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        .product-title {
+            font-weight: 800;
+            font-size: 1.02rem;
+            text-transform: uppercase;
+            line-height: 1.25;
+        }
+        .product-price {
+            color: var(--pink-hot);
+            font-weight: 800;
+            font-size: 1.05rem;
+            white-space: nowrap;
+        }
+
+        .product-desc {
+            padding: 0 1.25rem 0.85rem;
+            font-size: 0.8rem;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .sizes-label {
+            padding: 0 1.25rem 0.35rem;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--green-dark);
+        }
+
+        .sizes { display: flex; gap: 0.5rem; padding: 0 1.25rem 1.25rem; }
+        .size {
+            flex: 1;
+            padding: 0.55rem 0;
+            background: var(--white);
+            border: 1.5px solid var(--black);
+            color: var(--black);
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .size:hover { background: var(--peach-bg); }
+        .size.selected {
+            background: var(--pink-soft);
+            color: var(--black);
+            border-color: var(--black);
+            box-shadow: 2px 2px 0 var(--black);
+        }
+        .sizes.error .size { border-color: var(--pink-hot); background-color: #ffe8f0; }
+
+        .btn-buy {
+            display: block;
+            width: 100%;
+            margin-top: auto;
+            padding: 1rem;
+            background-color: var(--green-dark);
+            color: var(--white);
+            border: none;
+            border-top: 2px solid var(--black);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-buy:hover {
+            background-color: var(--pink-hot);
+            color: var(--white);
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: var(--peach-bg);
+            border-top: 2px solid var(--black);
+            padding: 2.5rem 5%;
+            text-align: center;
+        }
+        footer img {
+            height: 64px;
+            width: auto;
+            margin-bottom: 0.75rem;
+        }
+        footer p {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Carrito (panel lateral) */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+        .overlay.open { opacity: 1; pointer-events: auto; }
+
+        .cart {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: min(420px, 100%);
+            background: var(--white);
+            border-left: 3px solid var(--black);
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 11;
+        }
+        .cart.open { transform: translateX(0); }
+
+        .cart-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            background-color: var(--green-dark);
+            color: var(--white);
+            border-bottom: 2px solid var(--black);
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .btn-close {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
+        .cart-empty {
+            color: var(--black);
+            text-align: center;
+            margin-top: 3rem;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+        .cart-empty img {
+            width: 90px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 64px 1fr auto;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1.5px solid var(--black);
+            align-items: start;
+        }
+        .cart-item-img {
+            width: 64px;
+            height: 80px;
+            background: #f6f6f6;
+            border: 1.5px solid var(--black);
+            overflow: hidden;
+        }
+        .cart-item-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .cart-item-name { font-weight: 800; font-size: 0.9rem; text-transform: uppercase; }
+        .cart-item-meta { color: var(--green-dark); font-weight: 700; font-size: 0.8rem; margin: 0.2rem 0 0.6rem; }
+
+        .qty { display: inline-flex; align-items: center; border: 1.5px solid var(--black); background: var(--peach-bg); }
+        .qty button {
+            width: 28px;
+            height: 28px;
+            background: none;
+            border: none;
+            color: var(--black);
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .qty span { min-width: 28px; text-align: center; font-size: 0.85rem; font-weight: 700; }
+
+        .cart-item-right { text-align: right; font-size: 0.9rem; font-weight: 800; color: var(--pink-hot); }
+        .btn-remove {
+            display: block;
+            margin: 0.6rem 0 0 auto;
+            background: none;
+            border: none;
+            color: var(--black);
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .btn-remove:hover { color: var(--pink-hot); }
+
+        .cart-foot {
+            padding: 1.5rem;
+            background-color: var(--peach-bg);
+            border-top: 2px solid var(--black);
+        }
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .cart-foot .btn-buy { border: 2px solid var(--black); box-shadow: 4px 4px 0 var(--black); }
+        .btn-buy:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 1.5rem;
+            transform: translate(-50%, 150%);
+            background: var(--pink-hot);
+            color: var(--white);
+            border: 2px solid var(--black);
+            box-shadow: 4px 4px 0 var(--black);
+            padding: 0.8rem 1.4rem;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: transform 0.3s;
+            z-index: 20;
+        }
+        .toast.show { transform: translate(-50%, 0); }
+
+        @media (max-width: 600px) {
+            .status { display: none; }
+            .countdown { gap: 0.6rem; }
+            .time-box { min-width: 80px; padding: 0.6rem 0.8rem; }
+        }
+        /* Cursor de clic en las fotos del catálogo */
+        .product-image {
+            cursor: zoom-in;
+        }
+
+        /* Cuadro Pop-up (Modal Lightbox) para ver imagen amplia */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            z-index: 30;
+        }
+        .lightbox.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-box {
+            position: relative;
+            background: var(--white);
+            border: 3px solid var(--black);
+            box-shadow: 8px 8px 0 var(--pink-soft);
+            max-width: 620px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0.95);
+            transition: transform 0.25s ease;
+        }
+        .lightbox.open .lightbox-box {
+            transform: scale(1);
+        }
+
+        .lightbox-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.85rem 1.25rem;
+            background: var(--green-dark);
+            color: var(--white);
+            border-bottom: 2px solid var(--black);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .lightbox-close {
+            background: var(--pink-hot);
+            color: var(--white);
+            border: 1.5px solid var(--black);
+            width: 32px;
+            height: 32px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 var(--black);
+        }
+        .lightbox-close:hover {
+            background: var(--pink-soft);
+            color: var(--black);
+        }
+
+        .lightbox-body {
+            background: #f6f6f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            max-height: calc(90vh - 60px);
+        }
+
+        .lightbox-body img {
+            width: 100%;
+            height: auto;
+            max-height: calc(90vh - 60px);
+            object-fit: contain;
+            display: block;
+        }
+        /* 1. Botón de Ayuda Flotante */
+        .btn-help {
+            position: fixed;
+            top: 5.5rem; /* Lo baja un poco para no tapar el header */
+            right: 1rem;
+            background-color: var(--pink-hot);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 0.5rem 0.8rem;
+            font-weight: 800;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 3px 3px 0 var(--black);
+            z-index: 8; /* Menor que el header (9) para que pase por debajo al hacer scroll */
+            transition: transform 0.15s, box-shadow 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .btn-help:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 var(--black);
+        }
+
+        /* 2. Cinta inferior animada (Marquee) */
+        .shipping-banner {
+            background-color: var(--pink-soft);
+            border-top: 2px solid var(--black);
+            padding: 0.5rem 0;
+            overflow: hidden; /* Oculta el texto que sale de la pantalla */
+            white-space: nowrap;
+            position: relative;
+            display: flex;
+        }
+        .shipping-banner span {
+            display: inline-block;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--black);
+            /* Animación constante hacia la derecha */
+            animation: move-right 12s linear infinite;
+        }
+        
+        @keyframes move-right {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(100vw); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="brand-header">
+            <img id="img-mascota-color" src="assets/branding/mascota-color-transp.png" alt="Cindy's Mascota">
+            <span class="brand-name">Cindy's</span>
+        </a>
+        <div class="header-right">
+            <div class="status">● DROP ACTIVO</div>
+            <button class="btn-cart" id="open-cart" aria-label="Abrir carrito">
+                Carrito <span class="cart-count" id="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+<!-- Botón Flotante de Ayuda -->
+    <a href="#" class="btn-help" id="btn-help">
+        ❓ Ayuda
+    </a>
+
+    <section class="hero">
+        <div class="hero-logo-box">
+            <img src="assets/branding/logo-principal-transp.png" alt="Cindy's ESTD. 2026">
+        </div>
+        <h1>Colección Limitada — Drop 01</h1>
+        <p>Piezas seleccionadas por temporada. El acceso se cierra al agotar existencias.</p>
+
+        <div class="countdown" id="timer">
+            <div class="time-box"><span class="number" id="hours">00</span><span class="label">Horas</span></div>
+            <div class="time-box"><span class="number" id="minutes">00</span><span class="label">Minutos</span></div>
+            <div class="time-box"><span class="number" id="seconds">00</span><span class="label">Segundos</span></div>
+        </div>
+    </section>
+
+    <main class="grid-container" id="grid"></main>
+
+    <!-- Cinta inferior de envíos -->
+    <div class="shipping-banner">
+        <span>Envíos locales y nacionales desde $199.00 MXN</span>
+    </div>
+    <footer>
+        <img src="assets/branding/mascota-bw-transp.png" alt="Cindy's Sello">
+        <p>CINDY'S ESTD. 2026 — TODOS LOS DERECHOS RESERVADOS.</p>
+        <p>"Los gastos de envío no están incluidos en el precio del producto y se cotizan por separado según tu ubicación. Contáctanos antes de pagar para darte el costo total."</p>
+    </footer>
+
+    <div class="overlay" id="overlay"></div>
+    <aside class="cart" id="cart" aria-label="Carrito de compras" aria-hidden="true">
+        <div class="cart-head">
+            <span>TU CARRITO</span>
+            <button class="btn-close" id="close-cart" aria-label="Cerrar carrito">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-foot">
+            <div class="cart-total"><span>Total</span><span id="cart-total">$0 MXN</span></div>
+            <button class="btn-buy" id="checkout">Finalizar pedido por WhatsApp</button>
+        </div>
+    </aside>
+
+    <div class="toast" id="toast" role="status"></div>
+    <!-- Cuadro Pop-up para ver imagen amplia -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lightbox-box">
+            <div class="lightbox-head">
+                <span id="lightbox-title">Vista Previa</span>
+                <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar imagen">&times;</button>
+            </div>
+            <div class="lightbox-body">
+                <img id="lightbox-img" src="" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* ============================================================
+           CONFIGURACIÓN DE WHATSAPP Y CATÁLOGO DROP 01 (6 PIEZAS)
+           ============================================================ */
+        // Pon aquí tu número de WhatsApp con clave de México (52 + 10 dígitos)
+        const WHATSAPP_NUMERO = "526566086815";
+
+            const PRODUCTOS = [
+            {
+                id: 'drop01-01',
+                nombre: 'Bodystocking Red Crimson',
+                descripcion: 'Malla completa de red elástica con escote off-shoulder y manga larga.',
+                precio: 120,
+                tallas: ['Unitalla'],
+                foto: 'assets/productos/drop01-01.jpeg',
+                esModelo: true
+            },
+            {
+                id: 'drop01-02',
+                nombre: 'Set Mesh & Heart Noir',
+                descripcion: 'Conjunto dos piezas en red negra con tirantes cruzados halter y detalle de corazón.',
+                precio: 150,
+                tallas: ['Unitalla'],
+                foto: 'assets/productos/drop01-02.jpeg',
+                esModelo: false
+            },
+            {
+                id: 'drop01-03',
+                nombre: 'Set Floral Lace Vino',
+                descripcion: 'Conjunto de encaje floral en tono vino tinto con copa estructurada y herrajes.',
+                precio: 300,
+                tallas: ['M'],
+                foto: 'assets/productos/drop01-03.jpeg',
+                esModelo: false
+            },
+            {
+                id: 'drop01-04',
+                nombre: 'Babydoll Tul Kisses Pink',
+                descripcion: 'Babydoll translúcido en tul rosa con bordado de labios, corset frontal y panty a juego.',
+                precio: 350,
+                tallas: ['S'],
+                foto: 'assets/productos/drop01-04.jpeg',
+                esModelo: false
+            },
+            {
+                id: 'drop01-05',
+                nombre: 'Set Satin & Lace Ciruela',
+                descripcion: 'Bralette balconette con moños en tirantes y panty de encaje con listones largos de satín.',
+                precio: 350,
+                tallas: ['S'],
+                foto: 'assets/productos/drop01-05.jpeg',
+                esModelo: false
+            },
+            {
+                id: 'drop01-06',
+                nombre: 'Set Encaje Espresso',
+                descripcion: 'Conjunto de dos piezas en encaje floral tono café espresso con soporte de varilla.',
+                precio: 300,
+                tallas: ['S', 'M'],
+                foto: 'assets/productos/drop01-06.jpeg',
+                esModelo: false
+            }
+        ];
+
+        const MONEDA = n => '$' + n.toLocaleString('es-MX') + ' MXN';
+        const grid = document.getElementById('grid');
+        const estado = {};
+        let carrito = [];
+
+        try { carrito = JSON.parse(localStorage.getItem('cindys-carrito')) || []; } catch (e) { carrito = []; }
+
+function pintarTienda() {
+            grid.innerHTML = PRODUCTOS.map(p => {
+                estado[p.id] = { talla: null };
+                return `
+                <article class="product-card">
+                    <div class="product-image" data-zoom="${p.id}" title="Clic para ampliar imagen">
+                        <span class="badge-drop">Drop 01</span>
+                        <img class="${p.esModelo ? 'cover-fit' : ''}" src="${p.foto}" alt="${p.nombre}">
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-title">${p.nombre}</h2>
+                        <span class="product-price">${MONEDA(p.precio)}</span>
+                    </div>
+                    <p class="product-desc">${p.descripcion}</p>
+                    <div class="sizes-label">Selecciona talla:</div>
+                    <div class="sizes" id="sizes-${p.id}">
+                        ${p.tallas.map(t => `
+                            <button class="size" data-talla="${p.id}:${t}">
+                                ${t}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <button class="btn-buy" data-agregar="${p.id}">Agregar al carrito</button>
+                </article>`;
+            }).join('');
+        }
+
+        function guardar() {
+            try { localStorage.setItem('cindys-carrito', JSON.stringify(carrito)); } catch (e) {}
+        }
+
+        function pintarCarrito() {
+            const cont = document.getElementById('cart-items');
+            const total = carrito.reduce((a, i) => a + i.precio * i.cantidad, 0);
+            const piezas = carrito.reduce((a, i) => a + i.cantidad, 0);
+
+            document.getElementById('cart-count').textContent = piezas;
+            document.getElementById('cart-total').textContent = MONEDA(total);
+            document.getElementById('checkout').disabled = piezas === 0;
+
+            if (!carrito.length) {
+                cont.innerHTML = `
+                    <div class="cart-empty">
+                        <img src="assets/branding/mascota-color-transp.png" alt="Cindy's">
+                        <p>Tu carrito está vacío.<br>Elige tu pieza favorita del drop.</p>
+                    </div>`;
+                return;
+            }
+            cont.innerHTML = carrito.map((i, idx) => `
+                <div class="cart-item">
+                    <div class="cart-item-img"><img src="${i.foto}" alt="${i.nombre}"></div>
+                    <div>
+                        <div class="cart-item-name">${i.nombre}</div>
+                        <div class="cart-item-meta">Talla ${i.talla} · ${MONEDA(i.precio)}</div>
+                        <div class="qty">
+                            <button data-menos="${idx}" aria-label="Quitar una pieza">&minus;</button>
+                            <span>${i.cantidad}</span>
+                            <button data-mas="${idx}" aria-label="Agregar una pieza">+</button>
+                        </div>
+                    </div>
+                    <div class="cart-item-right">
+                        ${MONEDA(i.precio * i.cantidad)}
+                        <button class="btn-remove" data-quitar="${idx}">Eliminar</button>
+                    </div>
+                </div>`).join('');
+        }
+
+        function abrirCarrito(abrir) {
+            document.getElementById('cart').classList.toggle('open', abrir);
+            document.getElementById('cart').setAttribute('aria-hidden', String(!abrir));
+            document.getElementById('overlay').classList.toggle('open', abrir);
+            document.body.classList.toggle('no-scroll', abrir);
+        }
+
+        function abrirLightbox(id) {
+            const p = PRODUCTOS.find(x => x.id === id);
+            if (!p) return;
+            document.getElementById('lightbox-img').src = p.foto;
+            document.getElementById('lightbox-img').alt = p.nombre;
+            document.getElementById('lightbox-title').textContent = `${p.nombre} — ${MONEDA(p.precio)}`;
+            document.getElementById('lightbox').classList.add('open');
+            document.getElementById('lightbox').setAttribute('aria-hidden', 'false');
+            document.body.classList.add('no-scroll');
+        }
+
+        function cerrarLightbox() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.getElementById('lightbox').setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('no-scroll');
+        }
+
+        let toastTimer;
+        function aviso(texto) {
+            const t = document.getElementById('toast');
+            t.textContent = texto;
+            t.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+        }
+
+        function agregar(id) {
+            const p = PRODUCTOS.find(x => x.id === id);
+            const talla = estado[id].talla;
+            const bloque = document.getElementById('sizes-' + id);
+            if (!talla) {
+                bloque.classList.add('error');
+                aviso('Selecciona una talla primero');
+                return;
+            }
+            const existente = carrito.find(i => i.id === id && i.talla === talla);
+            if (existente) existente.cantidad++;
+            else carrito.push({ id, nombre: p.nombre, precio: p.precio, talla, cantidad: 1, foto: p.foto });
+            
+            // Limpiamos el sombreado rosa de la talla automáticamente al agregar al carrito
+            estado[id].talla = null;
+            bloque.querySelectorAll('.size').forEach(b => b.classList.remove('selected'));
+
+            guardar();
+            pintarCarrito();
+            aviso('¡Agregado al carrito!');
+        }
+
+        document.addEventListener('click', e => {
+            // Si hace clic en la foto del producto, abrimos el pop-up
+            const zoomCaja = e.target.closest('[data-zoom]');
+            if (zoomCaja) {
+                abrirLightbox(zoomCaja.dataset.zoom);
+                return;
+            }
+
+            // Si hace clic en el fondo oscuro del pop-up o en el botón cerrar, lo cerramos
+            if (e.target.id === 'lightbox' || e.target.closest('#lightbox-close')) {
+                cerrarLightbox();
+                return;
+            }
+
+            const d = e.target.closest('button');
+            if (!d) return;
+            const ds = d.dataset;
+
+            if (ds.agregar) agregar(ds.agregar);
+
+            if (ds.talla) {
+                const [id, talla] = ds.talla.split(':');
+                const bloque = document.getElementById('sizes-' + id);
+                bloque.classList.remove('error');
+
+                // Si vuelve a tocar la misma talla que ya estaba en rosa, se quita el sombreado
+                if (estado[id].talla === talla) {
+                    estado[id].talla = null;
+                    d.classList.remove('selected');
+                } else {
+                    estado[id].talla = talla;
+                    bloque.querySelectorAll('.size').forEach(b => b.classList.toggle('selected', b === d));
+                }
+            }
+
+            if (ds.mas !== undefined) { carrito[ds.mas].cantidad++; guardar(); pintarCarrito(); }
+            if (ds.menos !== undefined) {
+                carrito[ds.menos].cantidad--;
+                if (carrito[ds.menos].cantidad <= 0) carrito.splice(ds.menos, 1);
+                guardar(); pintarCarrito();
+            }
+            if (ds.quitar !== undefined) { carrito.splice(ds.quitar, 1); guardar(); pintarCarrito(); }
+        });
+
+        document.getElementById('open-cart').onclick = () => abrirCarrito(true);
+        document.getElementById('close-cart').onclick = () => abrirCarrito(false);
+        document.getElementById('overlay').onclick = () => abrirCarrito(false);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') abrirCarrito(false); });
+
+        // Envío automático del carrito a WhatsApp
+        document.getElementById('checkout').onclick = () => {
+            if (!carrito.length) return;
+            const total = carrito.reduce((a, i) => a + i.precio * i.cantidad, 0);
+            let msg = "Hola *Cindy's*, quiero realizar el siguiente pedido del *Drop 01*:\n\n";
+            carrito.forEach(item => {
+                msg += `• ${item.cantidad}x ${item.nombre} (Talla: ${item.talla}) — ${MONEDA(item.precio * item.cantidad)}\n`;
+            });
+            msg += `\n*Total a pagar:* ${MONEDA(total)}\n\n¿Me compartes los datos de pago y entrega?`;
+            window.open(`https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(msg)}`, '_blank');
+        };
+
+        let timeRemaining = 4 * 60 * 60;
+        const updateTimer = () => {
+            const h = Math.floor(timeRemaining / 3600);
+            const m = Math.floor((timeRemaining % 3600) / 60);
+            const s = timeRemaining % 60;
+
+            document.getElementById('hours').textContent = String(h).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+
+            if (timeRemaining > 0) timeRemaining--;
+        };
+// Funcionalidad del botón flotante de Ayuda
+        document.getElementById('btn-help').onclick = (e) => {
+            e.preventDefault();
+            const mensajeAyuda = "Hola Cindy's, necesito ayuda con la página o información sobre el drop actual.";
+            window.open(`https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensajeAyuda)}`, '_blank');
+        };
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        pintarTienda();
+        pintarCarrito();
+    </script>
+</body>
+</html>
