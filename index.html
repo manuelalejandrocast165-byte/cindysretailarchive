@@ -636,6 +636,54 @@
             from { transform: translateX(-100%); }
             to { transform: translateX(100vw); }
         }
+        /* Contenedor de imagen relativo para posicionar la etiqueta */
+.product-card .img-container {
+    position: relative;
+}
+
+/* Etiqueta AGOTADO con estética Neobrutalista */
+.badge-soldout {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: var(--pink-hot, #ff2a85); /* Usa tu color de acento o rojo/rosa */
+    color: #ffffff;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 2px solid #000000;
+    box-shadow: 3px 3px 0px #000000;
+    z-index: 5;
+    letter-spacing: 1px;
+    pointer-events: none;
+}
+
+/* Efecto visual en la tarjeta cuando el producto está agotado */
+.product-card.sold-out img {
+    filter: grayscale(100%);
+    opacity: 0.65;
+}
+
+/* Bloqueo de botones de talla y compra en prendas agotadas */
+.product-card.sold-out .size-btn,
+.product-card.sold-out .size {
+    opacity: 0.4;
+    pointer-events: none;
+    text-decoration: line-through;
+}
+
+.product-card.sold-out .btn-add,
+.btn-add:disabled,
+.product-card.sold-out .btn-buy {
+    background-color: #d1d1d1 !important;
+    color: #555555 !important;
+    border-top: 2px solid #000000 !important;
+    box-shadow: none !important;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 1;
+}
     </style>
 </head>
 <body>
@@ -725,7 +773,8 @@
                 precio: 120,
                 tallas: ['Unitalla'],
                 foto: 'assets/productos/drop01-01.jpeg',
-                esModelo: true
+                esModelo: true,
+                agotado: false
             },
             {
                 id: 'drop01-02',
@@ -734,7 +783,8 @@
                 precio: 150,
                 tallas: ['Unitalla'],
                 foto: 'assets/productos/drop01-02.jpeg',
-                esModelo: false
+                esModelo: false,
+                agotado: true
             },
             {
                 id: 'drop01-03',
@@ -743,7 +793,8 @@
                 precio: 300,
                 tallas: ['M'],
                 foto: 'assets/productos/drop01-03.jpeg',
-                esModelo: false
+                esModelo: false,
+                agotado: false
             },
             {
                 id: 'drop01-04',
@@ -752,7 +803,8 @@
                 precio: 350,
                 tallas: ['S'],
                 foto: 'assets/productos/drop01-04.jpeg',
-                esModelo: false
+                esModelo: false,
+                agotado: false
             },
             {
                 id: 'drop01-05',
@@ -761,7 +813,8 @@
                 precio: 350,
                 tallas: ['S'],
                 foto: 'assets/productos/drop01-05.jpeg',
-                esModelo: false
+                esModelo: false,
+                agotado: true
             },
             {
                 id: 'drop01-06',
@@ -770,7 +823,8 @@
                 precio: 300,
                 tallas: ['S', 'M'],
                 foto: 'assets/productos/drop01-06.jpeg',
-                esModelo: false
+                esModelo: false,
+                agotado: false
             }
         ];
 
@@ -784,10 +838,11 @@
 function pintarTienda() {
             grid.innerHTML = PRODUCTOS.map(p => {
                 estado[p.id] = { talla: null };
+                const estaAgotado = p.agotado === true;
                 return `
-                <article class="product-card">
+                <article class="product-card ${estaAgotado ? 'sold-out' : ''}">
                     <div class="product-image" data-zoom="${p.id}" title="Clic para ampliar imagen">
-                        <span class="badge-drop">Drop 01</span>
+                        ${estaAgotado ? '<span class="badge-soldout">AGOTADO</span>' : '<span class="badge-drop">Drop 01</span>'}
                         <img class="${p.esModelo ? 'cover-fit' : ''}" src="${p.foto}" alt="${p.nombre}">
                     </div>
                     <div class="product-info">
@@ -798,12 +853,12 @@ function pintarTienda() {
                     <div class="sizes-label">Selecciona talla:</div>
                     <div class="sizes" id="sizes-${p.id}">
                         ${p.tallas.map(t => `
-                            <button class="size" data-talla="${p.id}:${t}">
+                            <button class="size" data-talla="${p.id}:${t}" ${estaAgotado ? 'disabled' : ''}>
                                 ${t}
                             </button>
                         `).join('')}
                     </div>
-                    <button class="btn-buy" data-agregar="${p.id}">Agregar al carrito</button>
+                    <button class="btn-buy" data-agregar="${p.id}" ${estaAgotado ? 'disabled' : ''}>${estaAgotado ? 'AGOTADO' : 'Agregar al carrito'}</button>
                 </article>`;
             }).join('');
         }
